@@ -1,6 +1,7 @@
 import React, {FC} from "react";
 import styles from "./index.module.sass";
 import {Header} from "../Header";
+import {Footer} from "../Footer";
 
 export interface IBaseLayout {
     children?: React.ReactNode
@@ -15,9 +16,9 @@ export const BaseLayout: FC<IBaseLayout> = ({children}) => {
             <main className={styles.content}>
                 {children}
             </main>
-            {/*<footer className={styles.footer}>*/}
-            {/*    <Footer />*/}
-            {/*</footer>*/}
+            <footer className={styles.footer}>
+                <Footer />
+            </footer>
         </div>
     )
 }
