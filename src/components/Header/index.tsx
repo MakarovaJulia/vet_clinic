@@ -4,6 +4,7 @@ import privet_logo from '../../asserts/icons/privet_logo.svg';
 import {NavLink, useNavigate} from 'react-router-dom';
 import { RoutesList } from '../../config/RoutesList';
 import {Button} from "../ui/Button";
+import {HeaderLinksBlock} from "../HeaderLinksBlock";
 
 export const Header = () => {
 
@@ -31,6 +32,7 @@ export const Header = () => {
                 <p>+79061171472</p>
                 <Button disabled={false} onClick={()=>{goTo('/signup')}}>Зарегистрироваться</Button>
             </div>
+                <HeaderLinksBlock/>
             </div>
         </>
     );
