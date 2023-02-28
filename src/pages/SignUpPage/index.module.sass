@@ -1,3 +1,5 @@
+@import "../../styles/mixins"
+
 .content_wrapper
   display: flex
   flex-direction: row
@@ -5,6 +7,26 @@
   align-items: center
   min-height: 100vh
   padding: 0
+  @include secondary-text
+  .form_wrapper
+    display: flex
+    flex-direction: column
+    .header_link
+      text-decoration: none
+      color: $c-orange
+    .login_wrapper
+      display: flex
+      flex-direction: row
+      margin: 0
+      align-items: center
+  .hello_text
+    display: flex
+    flex-direction: row
+    margin: 0
+    .vet
+      color: $c-orange
+      margin: 0
+      padding: 0
   .image_wrapper
     display: flex
     min-height: 100vh
