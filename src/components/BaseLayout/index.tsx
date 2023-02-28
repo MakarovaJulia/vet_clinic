@@ -16,9 +16,6 @@ export const BaseLayout: FC<IBaseLayout> = ({children}) => {
             <main className={styles.content}>
                 {children}
             </main>
-            <footer className={styles.footer}>
-                <Footer />
-            </footer>
         </div>
     )
 }
