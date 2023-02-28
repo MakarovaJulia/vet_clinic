@@ -1,0 +1,28 @@
+@import "../../styles/mixins"
+
+.doctors_pin_wrapper
+  display: flex
+  flex-direction: row
+  align-items: end
+  width: 300px
+  position: relative
+  padding: 0
+  .doctors_service_wrapper
+    display: flex
+    align-items: center
+    width: 100%
+    height: 20vh
+    z-index: 5
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.60))
+    .doctors_service
+      padding-left: 10px
+      padding-bottom: 10px
+      .title
+        margin: 0
+        color: $c-white
+  .doctor_img
+    position: absolute
+    width: 100%
+    height: 100%
+    object-fit: cover
+    border-radius: 3px
