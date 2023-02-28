@@ -4,4 +4,5 @@ export const RoutesList = {
     LoginPage: '/login',
     ProfilePage: '/profile',
     DoctorPage: '/doctor',
+    DoctorsFilterPage: '/doctors_filter',
 };

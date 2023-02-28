@@ -11,9 +11,6 @@ export const DoctorsGalleryBlock = ({data}:any) => {
             <div className={styles.doctors_gallery}>
                 <DoctorsGalleryPin/>
             </div>
-            <div className={styles.btn_wrapper}>
-                <Button disabled={false} theme="primary">Все врачи</Button>
-            </div>
         </div>
     )
 }

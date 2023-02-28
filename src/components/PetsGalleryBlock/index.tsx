@@ -10,9 +10,6 @@ export const PetsGalleryBlock = ({data}:any) => {
             <div className={styles.pets_gallery}>
                 <PetsGalleryPin/>
             </div>
-            <div className={styles.btn_wrapper}>
-                <Button disabled={false} theme="secondary">Все услуги</Button>
-            </div>
         </div>
     )
 }

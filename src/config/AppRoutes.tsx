@@ -5,12 +5,14 @@ import { RoutesList } from './RoutesList';
 import {SignUpPage} from "../pages/SignUpPage";
 import {LoginPage} from "../pages/LoginPage";
 import {DoctorPage} from "../pages/DoctorPage";
+import {DoctorsFilterPage} from "../pages/DoctorsFilterPage";
 
 const RoutesListConfig = [
     { path: RoutesList.MainPage, element: MainPage },
     { path: RoutesList.SignUpPage, element: SignUpPage },
     { path: RoutesList.LoginPage, element: LoginPage },
     { path: RoutesList.DoctorPage, element: DoctorPage },
+    { path: RoutesList.DoctorsFilterPage, element: DoctorsFilterPage },
 ];
 
 export const AppRoutes = () => {
