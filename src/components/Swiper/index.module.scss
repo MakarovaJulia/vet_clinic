@@ -1,0 +1,34 @@
+.galleryWrapper {
+  width: 100%;
+  margin-top: 50px;
+}
+
+.buttonWrapper {
+  position: absolute;
+  top: 42%;
+  z-index: 1;
+  margin-right: 5vh;
+  margin-left: 5vh;
+}
+
+.buttonLeft{
+  left: 0;
+}
+
+
+@media screen and (max-width: 900px){
+  .buttonLeft{
+    display: none;
+  }
+}
+
+.buttonRight{
+  right: 0;
+}
+
+
+@media screen and (max-width: 900px){
+  .buttonRight{
+    display: none;
+  }
+}

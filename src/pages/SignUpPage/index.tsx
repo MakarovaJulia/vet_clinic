@@ -4,6 +4,7 @@ import styles from './index.module.sass';
 import login_image from "../../asserts/login_image.svg";
 import {NavLink} from "react-router-dom";
 import {RoutesList} from "../../config/RoutesList";
+import {AuthForm} from "../../components/AuthForm";
 
 export const SignUpPage = observer(() => {
     return(
@@ -25,6 +26,7 @@ export const SignUpPage = observer(() => {
                         Войти
                     </NavLink>
                     </div>
+                    <AuthForm/>
                 </div>
                 <div className={styles.image_wrapper}>
                     <img className={styles.login_image} src={login_image} />

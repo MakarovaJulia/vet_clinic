@@ -4,6 +4,7 @@ import {Button} from "../../components/ui/Button";
 import {Input} from "../../components/ui/Input";
 import {BaseLayout} from "../../components/BaseLayout";
 import {TextBlock} from "../../components/TextBlock";
+import {SwiperComponent} from "../../components/Swiper";
 import {PetsGalleryBlock} from "../../components/PetsGalleryBlock";
 import {DoctorsGalleryBlock} from "../../components/DoctorsGalleryBlock";
 import styles from "../../components/BaseLayout/index.module.sass";
@@ -20,6 +21,7 @@ export const MainPage = observer(() => {
     return(
         <BaseLayout>
             <div className={styles.content_wrapper}>
+                <SwiperComponent/>
                 <TextBlock>
                     В клинике проводится полный комплекс работ по диагностике, лечению и профилактике заболеваний,
                     а также реабилитация животных после травм и операций. У нас есть современный и комфортабельный стационар, в том числе инфекционный
