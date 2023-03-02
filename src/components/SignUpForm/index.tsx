@@ -6,7 +6,7 @@ import styles from "./index.module.sass";
 import classNames from "classnames/bind";
 import {useNavigate} from "react-router";
 import round_image from "../../asserts/icons/round_icon.svg";
-import React from "react";
+import React, {useState} from "react";
 import {usePasswordToggle} from "../../utils/usePasswordToggle";
 import {Input} from "../ui/Input";
 
@@ -16,6 +16,7 @@ export const SignUpForm = () => {
 
     let navigate = useNavigate()
     const [passwordInputType, toggleIcon] = usePasswordToggle()
+    const [agree, setAgree] = useState(false)
     // const  {authStore: {login, isError}, modalStore: {clearCurrentModal}} = useStores();
 
 
@@ -94,11 +95,17 @@ export const SignUpForm = () => {
                     </div>
                 </div>
             </div>
+            <div>
+                <input type="checkbox" id="agree" name="scales" onChange={(e)=>setAgree(e.target.checked)}/>
+                    <label htmlFor="agree">Я согласен на обработку персональных данных</label>
+            </div>
             <Button
                 color
                 title='Зарегистрироваться'
                 type='submit'
-                disabled={false}>Зарегистрироваться</Button>
+                disabled={!agree || !formik.isValid}
+                onClick={()=>{}}
+            >Зарегистрироваться</Button>
         </form>
     )
 }
