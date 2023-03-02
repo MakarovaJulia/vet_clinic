@@ -7,13 +7,15 @@ import classNames from "classnames/bind";
 import {useNavigate} from "react-router";
 import round_image from "../../asserts/icons/round_icon.svg";
 import React from "react";
+import {usePasswordToggle} from "../../utils/usePasswordToggle";
+import {Input} from "../ui/Input";
 
 const cx = classNames.bind(styles);
 
 export const SignUpForm = () => {
 
     let navigate = useNavigate()
-
+    const [passwordInputType, toggleIcon] = usePasswordToggle()
     // const  {authStore: {login, isError}, modalStore: {clearCurrentModal}} = useStores();
 
 
@@ -46,7 +48,6 @@ export const SignUpForm = () => {
                     })}
                     id='email'
                     type='email'
-                    placeholder='Email'
                     {...formik.getFieldProps('email')}
                 />
             </div>
@@ -54,15 +55,17 @@ export const SignUpForm = () => {
                 <div className={styles.errorMessage}>{formik.errors.email}</div>
             ) : null}
             <div>
-                <p>Password</p>
-                <input
+                <div className={styles.password_wrapper}>
+                    <p>Password</p>
+                    <span className={styles.password_toggle_icon}>{toggleIcon}</span>
+                </div>
+                <Input
                     className={cx({
                         input: true,
                         inputError: formik.touched.password && formik.errors.password
                     })}
                     id='password'
-                    type='password'
-                    placeholder='Пароль'
+                    type={passwordInputType}
                     {...formik.getFieldProps('password')}
                 />
                 {formik.touched.password && formik.errors.password ? (

@@ -10,5 +10,6 @@ export interface IInput {
     required?: boolean;
     label?: string;
     field?: any;
+    className:any;
     children?: React.ReactNode;
 }

@@ -3,11 +3,10 @@ import classNames from "classnames/bind";
 import styles from './index.module.sass';
 import {IInput} from "./index.interfaces";
 
-const cx = classNames.bind(styles);
 
 export const Input = React.forwardRef<HTMLInputElement, IInput>(
     (props, ref) => {
-        const {label, type, title, id, value, onChange, required, field, children, ...inputProps} = props;
+        const {label, type, title, id, value, className, onChange, required, field, children, ...inputProps} = props;
         return (
             <input
                 ref={ref}
@@ -16,9 +15,7 @@ export const Input = React.forwardRef<HTMLInputElement, IInput>(
                 value={value}
                 onChange={onChange}
                 required={required}
-                className={cx({
-                    input: true,
-                })}
+                className={className}
                 id={id}
                 {...field}
                 {...inputProps}
