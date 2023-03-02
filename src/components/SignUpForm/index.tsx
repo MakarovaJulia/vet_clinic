@@ -1,7 +1,7 @@
 import {useStores} from "../../utils/use-stores-hook";
 import {Button} from "../../components/ui/Button";
 import {useFormik} from "formik";
-import {authValidationSchema} from "../../utils/validationSchemas";
+import {authValidationSchema, regValidationSchema} from "../../utils/validationSchemas";
 import styles from "./index.module.sass";
 import classNames from "classnames/bind";
 import {useNavigate} from "react-router";
@@ -10,7 +10,7 @@ import React from "react";
 
 const cx = classNames.bind(styles);
 
-export const AuthForm = () => {
+export const SignUpForm = () => {
 
     let navigate = useNavigate()
 
@@ -22,7 +22,7 @@ export const AuthForm = () => {
             email: '',
             password: ''
         },
-        validationSchema: authValidationSchema,
+        validationSchema: regValidationSchema,
         onSubmit: values => {
             // login({
             //     login: values.phone,
@@ -68,12 +68,34 @@ export const AuthForm = () => {
                 {formik.touched.password && formik.errors.password ? (
                     <div className={styles.errorMessage}>{formik.errors.password}</div>
                 ) : null}
+                <div className={styles.validation_wrapper}>
+                    <div className={styles.validation_item}>
+                        <img src={round_image}/>
+                        <p>Более 8 символов</p>
+                    </div>
+                    <div className={styles.validation_item}>
+                        <img src={round_image}/>
+                        <p>Хотя бы 1 спец. символ</p>
+                    </div>
+                    <div className={styles.validation_item}>
+                        <img src={round_image}/>
+                        <p>Хотя бы 1 заглавная буква</p>
+                    </div>
+                    <div className={styles.validation_item}>
+                        <img src={round_image}/>
+                        <p>Хотя бы 1 цифра</p>
+                    </div>
+                    <div className={styles.validation_item}>
+                        <img src={round_image}/>
+                        <p>Хотя бы 1 буква</p>
+                    </div>
+                </div>
             </div>
             <Button
                 color
-                title='Войти'
+                title='Зарегистрироваться'
                 type='submit'
-                disabled={false}>Войти</Button>
+                disabled={false}>Зарегистрироваться</Button>
         </form>
     )
 }
