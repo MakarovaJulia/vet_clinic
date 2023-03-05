@@ -28,7 +28,7 @@ export const MainPage = observer(() => {
                 </TextBlock>
                 <PetsGalleryBlock/>
                 <div className={styles.btn_wrapper}>
-                    <Button disabled={false} theme="secondary">Все услуги</Button>
+                    <Button disabled={false} theme="secondary" onClick={()=>{goTo('/services_filter')}}>Все услуги</Button>
                 </div>
                 <DoctorsGalleryBlock/>
                 <div className={styles.btn_wrapper}>

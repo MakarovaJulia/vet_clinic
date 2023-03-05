@@ -6,6 +6,8 @@ import {SignUpPage} from "../pages/SignUpPage";
 import {LoginPage} from "../pages/LoginPage";
 import {DoctorPage} from "../pages/DoctorPage";
 import {DoctorsFilterPage} from "../pages/DoctorsFilterPage";
+import {ServicesFilterPage} from "../pages/ServicesFilterPage";
+import {ProfilePage} from "../pages/ProfilePage";
 
 const RoutesListConfig = [
     { path: RoutesList.MainPage, element: MainPage },
@@ -13,6 +15,8 @@ const RoutesListConfig = [
     { path: RoutesList.LoginPage, element: LoginPage },
     { path: RoutesList.DoctorPage, element: DoctorPage },
     { path: RoutesList.DoctorsFilterPage, element: DoctorsFilterPage },
+    { path: RoutesList.ServicesFilterPage, element: ServicesFilterPage },
+    { path: RoutesList.ProfilePage, element: ProfilePage },
 ];
 
 export const AppRoutes = () => {
