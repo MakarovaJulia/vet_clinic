@@ -1,7 +1,6 @@
 import React from "react";
 import {observer} from "mobx-react";
 import {Button} from "../../components/ui/Button";
-import {Input} from "../../components/ui/Input";
 import {BaseLayout} from "../../components/BaseLayout";
 import {TextBlock} from "../../components/TextBlock";
 import {SwiperComponent} from "../../components/Swiper";
@@ -34,10 +33,6 @@ export const MainPage = observer(() => {
                 <div className={styles.btn_wrapper}>
                     <Button disabled={false} theme="primary" onClick={()=>{goTo('/doctors_filter')}}>Все врачи</Button>
                 </div>
-                <TextBlock>
-                    В ветклинике  работают не только ветеринары общего профиля, но и врачи, специализирующиеся в области кардиологии, травматологии, неврологии, онкологии, дерматологии, эндокринологии, хирургии. В нашей лаборатории можно сдать все виды анализов крови: биохимический, клинический, на гормоны, на аллергены, сделать анализы мочи и кала.
-                    Современное оборудование позволяет нам проводить комплексную диагностику животного, включая УЗИ и эндоскопию. Также проводятся цитологические исследования на фертильность собак для определения оптимального времени вязки.
-                </TextBlock>
             </div>
             <Footer/>
         </BaseLayout>

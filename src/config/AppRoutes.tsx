@@ -8,6 +8,7 @@ import {DoctorPage} from "../pages/DoctorPage";
 import {DoctorsFilterPage} from "../pages/DoctorsFilterPage";
 import {ServicesFilterPage} from "../pages/ServicesFilterPage";
 import {ProfilePage} from "../pages/ProfilePage";
+import {ServicePage} from "../pages/ServicePage";
 
 const RoutesListConfig = [
     { path: RoutesList.MainPage, element: MainPage },
@@ -17,6 +18,7 @@ const RoutesListConfig = [
     { path: RoutesList.DoctorsFilterPage, element: DoctorsFilterPage },
     { path: RoutesList.ServicesFilterPage, element: ServicesFilterPage },
     { path: RoutesList.ProfilePage, element: ProfilePage },
+    { path: RoutesList.ServicePage, element: ServicePage },
 ];
 
 export const AppRoutes = () => {

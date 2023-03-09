@@ -10,7 +10,7 @@ import {HeaderLinksBlock} from "../HeaderLinksBlock";
 export const Header = () => {
 
     const navigate = useNavigate();
-    const [isAuth, setIsAuth] = useState(true)
+    const [isAuth, setIsAuth] = useState(false)
 
     const goTo = (link:string): void => {
         navigate(link)
@@ -43,9 +43,8 @@ export const Header = () => {
                         <img className={styles.header_icon} src={profile_icon} />
                     </NavLink>
                     :
-                    <></>
+                    <Button disabled={false} onClick={()=>{goTo('/signup')}}>Зарегистрироваться</Button>
                 }
-                <Button disabled={false} onClick={()=>{goTo('/signup')}}>Зарегистрироваться</Button>
             </div>
                 <HeaderLinksBlock/>
             </div>
