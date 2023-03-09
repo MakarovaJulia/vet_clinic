@@ -4,6 +4,7 @@ import styles from './index.module.sass';
 import {BaseLayout} from "../../components/BaseLayout";
 import {Categories} from "../../components/Categories";
 import {PetsGalleryBlock} from "../../components/PetsGalleryBlock";
+import {departmentItemsMock} from "../../mocks/serviceItemsMock";
 
 export const ServicesFilterPage = observer(() => {
     return (
@@ -12,7 +13,7 @@ export const ServicesFilterPage = observer(() => {
                 <div className={styles.categories_wrapper}>
                     <Categories/>
                 </div>
-                <PetsGalleryBlock/>
+                <PetsGalleryBlock galleryItems={departmentItemsMock}/>
             </div>
         </BaseLayout>
     )

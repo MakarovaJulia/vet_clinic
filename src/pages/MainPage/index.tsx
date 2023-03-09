@@ -9,6 +9,7 @@ import {DoctorsGalleryBlock} from "../../components/DoctorsGalleryBlock";
 import styles from "../../components/BaseLayout/index.module.sass";
 import {Footer} from "../../components/Footer";
 import {useNavigate} from "react-router-dom";
+import {departmentItemsMock} from "../../mocks/serviceItemsMock";
 
 export const MainPage = observer(() => {
     let navigate = useNavigate()
@@ -25,7 +26,7 @@ export const MainPage = observer(() => {
                     В клинике проводится полный комплекс работ по диагностике, лечению и профилактике заболеваний,
                     а также реабилитация животных после травм и операций. У нас есть современный и комфортабельный стационар, в том числе инфекционный
                 </TextBlock>
-                <PetsGalleryBlock/>
+                <PetsGalleryBlock galleryItems={departmentItemsMock}/>
                 <div className={styles.btn_wrapper}>
                     <Button disabled={false} theme="secondary" onClick={()=>{goTo('/services_filter')}}>Все услуги</Button>
                 </div>

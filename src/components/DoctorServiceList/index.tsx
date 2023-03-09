@@ -8,8 +8,6 @@ export const DoctorsServiceList = ({data}:any) => {
     return (
         <div className={styles.doctors_list_wrapper}>
             <h1>Услуги данного направления</h1>
-            <ServiceItem/>
-            <ServiceItem/>
         </div>
     )
 }

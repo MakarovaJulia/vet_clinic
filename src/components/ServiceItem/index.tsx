@@ -1,15 +1,14 @@
 import React from "react"
 import styles from "./index.module.sass";
-import {Button} from "../ui/Button";
-import temp_image from "../../asserts/temp_doctor_image.svg";
+import {IServiceItem} from "./index.interfaces";
 
-export const ServiceItem = ({data}:any) => {
+export const ServiceItem = (props: IServiceItem) => {
     return (
         <div className={styles.doctors_item_wrapper}>
             <div className={styles.item_container}>
-                <h3>Название услуги</h3>
+                <h4>{props.title}</h4>
                 <div className={styles.price_container}>
-                    <p className={styles.price}>Цена Р</p>
+                    <p className={styles.price}>{props.price} Р</p>
                 </div>
             </div>
         </div>
