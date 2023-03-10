@@ -10,7 +10,7 @@ import {HeaderLinksBlock} from "../HeaderLinksBlock";
 export const Header = () => {
 
     const navigate = useNavigate();
-    const [isAuth, setIsAuth] = useState(false)
+    const [isAuth, setIsAuth] = useState(true)
 
     const goTo = (link:string): void => {
         navigate(link)

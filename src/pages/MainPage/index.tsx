@@ -10,6 +10,7 @@ import styles from "../../components/BaseLayout/index.module.sass";
 import {Footer} from "../../components/Footer";
 import {useNavigate} from "react-router-dom";
 import {departmentItemsMock} from "../../mocks/serviceItemsMock";
+import {doctorsMock} from "../../mocks/doctorsMock";
 
 export const MainPage = observer(() => {
     let navigate = useNavigate()
@@ -30,7 +31,7 @@ export const MainPage = observer(() => {
                 <div className={styles.btn_wrapper}>
                     <Button disabled={false} theme="secondary" onClick={()=>{goTo('/services_filter')}}>Все услуги</Button>
                 </div>
-                <DoctorsGalleryBlock/>
+                <DoctorsGalleryBlock doctorItems={doctorsMock}/>
                 <div className={styles.btn_wrapper}>
                     <Button disabled={false} theme="primary" onClick={()=>{goTo('/doctors_filter')}}>Все врачи</Button>
                 </div>
