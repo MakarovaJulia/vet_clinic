@@ -1,11 +1,20 @@
-import {BaseLayout} from "../../components/BaseLayout";
 import {observer} from "mobx-react";
 import {UserPets} from "../../components/UserPets";
 import {UserAppointments} from "../../components/UserAppointments";
 import styles from "./index.module.sass";
 import {Header} from "../../components/Header";
 
+interface IAccountData {
+    first_name: string,
+    last_name: string,
+    email: string,
+    phone: string,
+    password: string
+}
+
 export const ProfilePage = observer(() => {
+
+
     return(
         <>
             <Header/>

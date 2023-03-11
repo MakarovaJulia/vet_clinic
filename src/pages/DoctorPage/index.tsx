@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import {observer} from "mobx-react";
 import styles from './index.module.sass';
 import {BaseLayout} from "../../components/BaseLayout";
-import {DoctorsServiceList} from "../../components/DoctorServiceList";
 import {parsePath, useParams} from "react-router-dom";
 import {doctorsMock} from "../../mocks/doctorsMock";
 import img from "../../asserts/doctors/temp_doctor_image.svg"
