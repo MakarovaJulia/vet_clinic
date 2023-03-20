@@ -21,7 +21,7 @@ export const Header = () => {
             <div className={styles.header_container}>
             <div className={styles.header_wrapper}>
                 <NavLink
-                    to={RoutesList.MainPage}
+                    to='/'
                     className={navData =>
                         navData.isActive
                             ? styles.header_link_active
@@ -34,7 +34,7 @@ export const Header = () => {
                 <p>+79061171472</p>
                 { isAuth ?
                     <NavLink
-                        to={RoutesList.ProfilePage}
+                        to='/profile'
                         className={navData =>
                             navData.isActive
                                 ? styles.header_link_active

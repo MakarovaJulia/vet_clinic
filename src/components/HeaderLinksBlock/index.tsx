@@ -16,7 +16,7 @@ export const HeaderLinksBlock = () => {
         <>
             <div className={styles.header_wrapper}>
                 <NavLink
-                    to={RoutesList.MainPage}
+                    to='/'
                     className={navData =>
                         navData.isActive
                             ? styles.header_link_active
@@ -25,7 +25,7 @@ export const HeaderLinksBlock = () => {
                     О клинике
                 </NavLink>
                 <NavLink
-                    to={RoutesList.MainPage}
+                    to='/'
                     className={navData =>
                         navData.isActive
                             ? styles.header_link_active
@@ -34,7 +34,7 @@ export const HeaderLinksBlock = () => {
                     О клинике
                 </NavLink>
                 <NavLink
-                    to={RoutesList.MainPage}
+                    to='/'
                     className={navData =>
                         navData.isActive
                             ? styles.header_link_active
@@ -43,7 +43,7 @@ export const HeaderLinksBlock = () => {
                     О клинике
                 </NavLink>
                 <NavLink
-                    to={RoutesList.MainPage}
+                    to='/'
                     className={navData =>
                         navData.isActive
                             ? styles.header_link_active
@@ -52,7 +52,7 @@ export const HeaderLinksBlock = () => {
                     О клинике
                 </NavLink>
                 <NavLink
-                    to={RoutesList.MainPage}
+                    to='/'
                     className={navData =>
                         navData.isActive
                             ? styles.header_link_active

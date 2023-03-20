@@ -18,7 +18,7 @@ export const SignUpPage = observer(() => {
                     <div className={styles.login_wrapper}>
                     <p>Уже есть аккаунт?</p>
                     <NavLink
-                        to={RoutesList.LoginPage}
+                        to='/login'
                         className={navData =>
                             navData.isActive
                                 ? styles.header_link_active
