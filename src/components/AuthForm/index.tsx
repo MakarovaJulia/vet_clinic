@@ -30,6 +30,7 @@ export const AuthForm = () => {
                 password: values.password
             })
             if (!isError) {
+              console.log('user')
                 // navigate('/profile')
             }
         },

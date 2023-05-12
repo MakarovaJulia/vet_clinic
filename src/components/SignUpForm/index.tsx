@@ -159,7 +159,6 @@ export const SignUpForm = () => {
                 title='Зарегистрироваться'
                 type='submit'
                 disabled={!agree || !formik.isValid}
-                onClick={()=>{}}
             >Зарегистрироваться</Button>
         </form>
     )

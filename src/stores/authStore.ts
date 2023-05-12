@@ -10,7 +10,7 @@ interface userProps{
     phone?: string,
 }
 
-export const BASE_URL = 'http://158.160.49.145:8080'
+export const BASE_URL = 'http://51.250.108.126:8080'
 
 export default class AuthStore {
     user: userProps;
@@ -54,7 +54,7 @@ export default class AuthStore {
             .then((res) => {
                 this.isLoading = false;
                 alert(res)
-                // localStorage.setItem("token", res.data.token);
+                localStorage.setItem("token", res.data.token);
                 localStorage.setItem("user", JSON.stringify(res.data))
             })
             .catch((err) => {
@@ -80,7 +80,7 @@ export default class AuthStore {
 
     logout = () => {
         console.log('logout');
-        // localStorage.removeItem("token")
+        localStorage.removeItem("token")
         localStorage.removeItem("user")
         this.isError = false;
     };

@@ -27,7 +27,7 @@ export const DoctorPage = observer(() => {
         <BaseLayout>
             <div className={styles.content_wrapper}>
                 <div className={styles.top_content}>
-                    <img className={styles.doctor_image}  src={img} />
+                    <img className={styles.doctor_image}  src={ `http://51.250.108.126:8080/api/files/${doctorData?.photoId}`} />
                     <div className={styles.text_block}>
                         <h1 className={styles.text_head}>{doctorData?.lastName} {doctorData?.firstName} {doctorData?.middleName}</h1>
                         <h3 className={styles.text_head}>{doctorData?.jobTitle}</h3>

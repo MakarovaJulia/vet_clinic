@@ -5,6 +5,7 @@ import styles from "./index.module.sass";
 import {Header} from "../../components/Header";
 import {useStores} from "../../utils/use-stores-hook";
 import {Button} from "../../components/ui/Button";
+import {useNavigate} from "react-router-dom";
 
 interface IAccountData {
     first_name: string,
@@ -16,9 +17,26 @@ interface IAccountData {
 
 export const ProfilePage = observer(() => {
 
+    let navigate = useNavigate()
+
+    const goTo = (path: string): void => {
+        navigate(path)
+    }
+
+    const {
+        authStore: {user, logout}
+    } = useStores()
+
+    const userLogout = (): void => {
+        logout()
+        navigate('/')
+    }
+
     const showData = () =>{
         alert(localStorage.getItem("user"))
     }
+
+    console.log(localStorage.getItem("user"))
 
     return(
         <>
@@ -31,7 +49,7 @@ export const ProfilePage = observer(() => {
                     Email
                     Телефон
                 </div>
-                <Button disabled={false} onClick={showData}>Выйти</Button>
+                <Button disabled={false} onClick={()=>logout()}>Выйти</Button>
             </div>
             <div className={styles.user_info_wrapper}>
                 <UserPets/>
