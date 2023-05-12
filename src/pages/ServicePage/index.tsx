@@ -3,34 +3,45 @@ import {observer} from "mobx-react";
 import {Header} from "../../components/Header";
 import styles from "./index.module.sass";
 import {useParams} from "react-router-dom";
-import {departmentItemsMock} from "../../mocks/serviceItemsMock";
-import {serviceItemsMock} from "../../mocks/serviceItemsMock";
+import {departmentByIdGet, departmentServicesGet} from "../../fetchData";
 import {ServicesBlock} from "../../components/ServicesBlock";
 
 
 export const ServicePage = observer(() => {
 
-    const [departmentName, setDepartmentName] = useState<any>(null)
+    const [department, setDepartment] = useState<any>(null)
+    const [services, setServices] = useState<any>(null)
     const {id} = useParams()
-
-    const getDepartmentName = (id: number | undefined) => {
-        setDepartmentName(departmentItemsMock.find(x => x.id === id)?.name)
-    }
 
     useEffect(()=>{
         if(id){
-            getDepartmentName(parseInt(id))
+            departmentByIdGet(id).then((data) => setDepartment(data))
         }
     }, [id])
+
+
+    useEffect(()=>{
+        if(department){
+            departmentServicesGet(department.id).then((data) => setServices(data.data))
+        }
+    }, [department])
+
+    console.log(services)
 
     return (
         <>
             <Header/>
             <div className={styles.wrapper}>
-                <h1>{departmentName}</h1>
-                <div className={styles.items_wrapper}>
-                    <ServicesBlock serviceItems={serviceItemsMock} department={departmentName}/>
-                </div>
+                {department?
+                  <>
+                      <h1>{department.name}</h1>
+                      <div className={styles.items_wrapper}>
+                          <ServicesBlock serviceItems={services}/>
+                      </div>
+                  </>
+                  :
+                  <></>
+                }
             </div>
         </>
     )

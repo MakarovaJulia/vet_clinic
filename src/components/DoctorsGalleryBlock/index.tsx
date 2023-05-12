@@ -1,6 +1,8 @@
-import React from "react"
+import React, {useEffect, useState} from "react"
 import styles from "./index.module.sass";
 import {DoctorsGalleryPin} from "../DoctorsGalleryPin";
+import {departmentsGet} from "../../fetchData";
+import {PetsGalleryPin} from "../PetsGalleryPin";
 
 interface IDoctorItem {
     id: number,
@@ -14,33 +16,18 @@ interface IDoctorItems {
     doctorItems:IDoctorItem[];
 }
 
-export const DoctorsGalleryBlock = (props: IDoctorItems) => {
+export const DoctorsGalleryBlock = () => {
 
-    const {doctorItems} = props;
+    const [doctors, setDoctors] = useState<any>([])
 
-    const getPins = (mapItems: IDoctorItem[]) => {
-        const cards = [];
-        for (let item of mapItems) {
-            if (item.id < 3){
-                cards.push(
-                    <DoctorsGalleryPin
-                        first_name={item.first_name}
-                        last_name={item.last_name}
-                        middle_name={item.middle_name}
-                        id={item.id}
-                        photo_id={item.photo_id}/>
-                )
-            }
-            else break
-        }
-        return cards;
-    }
 
     return (
         <div className={styles.doctors_gallery_wrapper}>
             <h1 className={styles.doctors_gallery_header}>Врачи</h1>
             <div className={styles.doctors_gallery}>
-                {getPins(doctorItems)}
+                {doctors && doctors.slice(0, 6).map((data: any) => (
+                    <DoctorsGalleryPin data={data}/>
+                ))}
             </div>
         </div>
     )

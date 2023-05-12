@@ -3,6 +3,8 @@ import {UserPets} from "../../components/UserPets";
 import {UserAppointments} from "../../components/UserAppointments";
 import styles from "./index.module.sass";
 import {Header} from "../../components/Header";
+import {useStores} from "../../utils/use-stores-hook";
+import {Button} from "../../components/ui/Button";
 
 interface IAccountData {
     first_name: string,
@@ -14,6 +16,9 @@ interface IAccountData {
 
 export const ProfilePage = observer(() => {
 
+    const showData = () =>{
+        alert(localStorage.getItem("user"))
+    }
 
     return(
         <>
@@ -26,6 +31,7 @@ export const ProfilePage = observer(() => {
                     Email
                     Телефон
                 </div>
+                <Button disabled={false} onClick={showData}>Выйти</Button>
             </div>
             <div className={styles.user_info_wrapper}>
                 <UserPets/>

@@ -1,6 +1,9 @@
-import React from "react"
+import React, {useEffect, useState} from "react"
 import styles from "./index.module.sass";
 import {PetsGalleryPin} from "../PetsGalleryPin";
+import {Button} from "../ui/Button";
+import {departmentsGet} from "../../fetchData";
+import {date} from "yup";
 
 interface IDepartmentItem {
     id: number,
@@ -11,31 +14,21 @@ interface IGalleryItems {
     galleryItems:IDepartmentItem[];
 }
 
-export const PetsGalleryBlock = (props: IGalleryItems) => {
+export const PetsGalleryBlock = () => {
 
-    const {galleryItems} = props;
+    const [departments, setDepartments] = useState<any>([])
 
-    const getPins = (mapItems: IDepartmentItem[]) => {
-        const cards = [];
-        for (let item of mapItems) {
-            if (item.id < 6){
-                cards.push(
-                    <PetsGalleryPin
-                        department={item.name}
-                        id={item.id}
-                    />
-                )
-            }
-            else break
-        }
-        return cards;
-    }
+    useEffect(()=>{
+        departmentsGet().then((data)=>{setDepartments(data.data)})
+    }, [])
 
     return (
         <div className={styles.pets_gallery_wrapper}>
             <h1 className={styles.pins_gallery_header}>Услуги</h1>
             <ul className={styles.pets_gallery}>
-                {getPins(galleryItems)}
+                {departments && departments.slice(0, 6).map((data: any) => (
+                    <PetsGalleryPin data={data}/>
+                ))}
             </ul>
         </div>
     )

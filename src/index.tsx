@@ -4,15 +4,19 @@ import './index.css';
 import App from './config/App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
+import {Provider} from "mobx-react";
+import mainStore from "./stores/mainStore";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
+      <Provider {...mainStore}>
       <BrowserRouter>
           <App />
       </BrowserRouter>
+      </Provider>
   </React.StrictMode>
 );
 

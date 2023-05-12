@@ -13,7 +13,7 @@ export const ServicesFilterPage = observer(() => {
                 <div className={styles.categories_wrapper}>
                     <Categories/>
                 </div>
-                <PetsGalleryBlock galleryItems={departmentItemsMock}/>
+                {/*<PetsGalleryBlock galleryItems={departmentItemsMock}/>*/}
             </div>
         </BaseLayout>
     )

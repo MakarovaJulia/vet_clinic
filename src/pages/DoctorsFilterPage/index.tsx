@@ -13,7 +13,7 @@ export const DoctorsFilterPage = observer(() => {
                 <div className={styles.categories_wrapper}>
                     <Categories/>
                 </div>
-                <DoctorsGalleryBlock doctorItems={doctorsMock}/>
+                <DoctorsGalleryBlock/>
             </div>
         </BaseLayout>
     )
