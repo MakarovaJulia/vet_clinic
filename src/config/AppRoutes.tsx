@@ -8,7 +8,7 @@ import {DoctorPage} from "../pages/DoctorPage";
 import {DoctorsFilterPage} from "../pages/DoctorsFilterPage";
 import {ServicesFilterPage} from "../pages/ServicesFilterPage";
 import {ProfilePage} from "../pages/ProfilePage";
-import {ServicePage} from "../pages/ServicePage";
+import {ServicesPage} from "../pages/ServicesPage";
 import {ProtectedRoute} from "../utils/protectedRoute";
 //
 // const RoutesListConfig = [
@@ -19,7 +19,7 @@ import {ProtectedRoute} from "../utils/protectedRoute";
 //     { path: RoutesList.DoctorsFilterPage, element: DoctorsFilterPage },
 //     { path: RoutesList.ServicesFilterPage, element: ServicesFilterPage },
 //     { path: RoutesList.ProfilePage, element: ProfilePage },
-//     { path: RoutesList.ServicePage, element: ServicePage },
+//     { path: RoutesList.ServicesPage, element: ServicesPage },
 // ];
 
 export const AppRoutes = () => {

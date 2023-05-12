@@ -3,12 +3,12 @@ import React from "react";
 
 export const ServicesBlock = (props: any) => {
 
-    const {serviceItems} = props;
+    const {serviceItems, department} = props;
 
     return (
         <div>
             {serviceItems && serviceItems.map((data: any) => (
-                <ServiceItem data={data}/>
+                <ServiceItem service={data} department={department}/>
             ))}
         </div>
     )

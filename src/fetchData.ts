@@ -14,6 +14,17 @@ export const departmentByIdGet = async (id:string) =>{
     return department
 }
 
+export const departmentServicesGet = async (id:string) =>{
+    let departmentServices = await axios.get(`${BASE_URL}/api/department/${id}/service`)
+    console.log(departmentServices)
+    return departmentServices
+}
+
+export const serviceDoctorsGet = async (id:string) =>{
+    let serviceDoctors = await axios.get(`${BASE_URL}/api/department/${id}/doctor`)
+    console.log(serviceDoctors)
+    return serviceDoctors
+}
 
 export const doctorByIdGet = async (id:string|undefined) =>{
     let doctor = await axios.get(`${BASE_URL}/api/doctor/${id}`)
@@ -21,8 +32,12 @@ export const doctorByIdGet = async (id:string|undefined) =>{
     return doctor
 }
 
-export const departmentServicesGet = async (id:string) =>{
-    let departmentServices = await axios.get(`${BASE_URL}/api/department/${id}/service`)
-    console.log(departmentServices)
-    return departmentServices
+export const doctorPhotoGet = async (id:string|undefined) =>{
+    let photo = await axios.get(`${BASE_URL}/api/files/${id}`)
+    return photo
+}
+
+export const doctorTimeGet = async (id:string|undefined) =>{
+    let time = await axios.get(`${BASE_URL}/api/doctor/${id}/time`)
+    return time
 }

@@ -30,9 +30,6 @@ export const MainPage = observer(() => {
                     а также реабилитация животных после травм и операций. У нас есть современный и комфортабельный стационар, в том числе инфекционный
                 </TextBlock>
                 <PetsGalleryBlock/>
-                <div className={styles.btn_wrapper}>
-                    <Button disabled={false} theme="secondary" onClick={()=>{goTo('/services_filter')}}>Все услуги</Button>
-                </div>
             </div>
             <Footer/>
         </BaseLayout>

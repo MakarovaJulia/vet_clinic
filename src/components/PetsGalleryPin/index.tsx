@@ -16,7 +16,7 @@ export const PetsGalleryPin = ({data}: any) => {
 
     return (
         <div className={styles.pets_pin_wrapper}>
-            <Link className={styles.link_wrapper} to={`/service/${data?.id}`}></Link>
+            <Link className={styles.link_wrapper} to={`/department/${data?.id}`}></Link>
                 <img className={styles.pins_img} src={require('../../asserts/pets/temp_image' + getRandomInt(0,8) + '.svg')} />
                 <div className={styles.pets_service_wrapper}>
                     <div className={styles.pets_service}>

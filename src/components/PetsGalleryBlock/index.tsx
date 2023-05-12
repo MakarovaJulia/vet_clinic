@@ -26,7 +26,7 @@ export const PetsGalleryBlock = () => {
         <div className={styles.pets_gallery_wrapper}>
             <h1 className={styles.pins_gallery_header}>Услуги</h1>
             <ul className={styles.pets_gallery}>
-                {departments && departments.slice(0, 6).map((data: any) => (
+                {departments && departments.map((data: any) => (
                     <PetsGalleryPin data={data}/>
                 ))}
             </ul>

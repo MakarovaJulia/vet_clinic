@@ -9,6 +9,7 @@ import {ProfilePage} from "../pages/ProfilePage";
 import {ServicesFilterPage} from "../pages/ServicesFilterPage";
 import {DoctorsFilterPage} from "../pages/DoctorsFilterPage";
 import {DoctorPage} from "../pages/DoctorPage";
+import {ServicesPage} from "../pages/ServicesPage";
 import {ServicePage} from "../pages/ServicePage";
 
 const App: FC = () => {
@@ -21,7 +22,8 @@ const App: FC = () => {
             <Route path="/services_filter" element={<ServicesFilterPage />}/>
             <Route path="/doctors_filter" element={<DoctorsFilterPage />}/>
             <Route path="/doctor/:id" element={<DoctorPage />}/>
-            <Route path="/service/:id" element={<ServicePage />}/>
+            <Route path="/department/:id" element={<ServicesPage />}/>
+            <Route path="/service/:departmentId/:id" element={<ServicePage />}/>
             <Route path="/login" element={<LoginPage />}/>
             <Route path="/signup" element={<SignUpPage />}/>
         </Routes>

@@ -2,42 +2,27 @@ import React, {useEffect, useState} from "react";
 import {observer} from "mobx-react";
 import styles from './index.module.sass';
 import {BaseLayout} from "../../components/BaseLayout";
-import {parsePath, useParams} from "react-router-dom";
-import {doctorsMock} from "../../mocks/doctorsMock";
+import {useParams} from "react-router-dom";
 import img from "../../asserts/doctors/temp_doctor_image.svg"
-import {departmentItemsMock, serviceItemsMock} from "../../mocks/serviceItemsMock";
-import {ServicesBlock} from "../../components/ServicesBlock";
-import {doctorByIdGet} from "../../fetchData";
-import {date} from "yup";
+import {doctorByIdGet, doctorTimeGet} from "../../fetchData";
+import {AppointmentsBlock} from "../../components/Appointments";
 
 
 export const DoctorPage = observer(() => {
 
     const [doctorData, setDoctorData] = useState<any>(null)
-    // const [doctorId, setDoctorId] = useState<any>(null)
-    const [departmentName, setDepartmentName] = useState<any>(null)
+    const [time, setTime] = useState<any>(null)
     const {id} = useParams()
-
-    // const getDoctorData = (id: number | undefined) => {
-    //     setDoctorData(doctorsMock.find(x => x.id === id))
-    // }
-    //
-    // useEffect(()=>{
-    //     if(id){
-    //         getDoctorData(parseInt(id))
-    //     }
-    // }, [id])
-    //
-    // useEffect(()=>{
-    //     if(id){
-    //         departmentNameByIdGet(doctorData?.data.departmentId).then((data)=>setDepartmentName(data.data))
-    //     }
-    // }, [id])
 
     useEffect(()=>{
         doctorByIdGet(id).then((data)=>{setDoctorData(data.data)})
     }, [])
 
+    useEffect(()=>{
+        if(id){
+            doctorTimeGet(id).then((data)=>{setTime(data.data)})
+        }
+    }, [id])
     return (
         <BaseLayout>
             <div className={styles.content_wrapper}>
@@ -50,13 +35,7 @@ export const DoctorPage = observer(() => {
                     </div>
                 </div>
                 <div className={styles.bottom_content}>
-                    <h1>Услуги данного направления</h1>
-                    {doctorData?
-                        <ServicesBlock departmentId={doctorData?.departmentId}/>
-                        :
-                        <></>
-                    }
-
+                  <AppointmentsBlock time={time}></AppointmentsBlock>
                 </div>
             </div>
         </BaseLayout>

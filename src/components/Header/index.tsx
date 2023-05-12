@@ -46,7 +46,6 @@ export const Header = () => {
                     <Button disabled={false} onClick={()=>{goTo('/signup')}}>Зарегистрироваться</Button>
                 }
             </div>
-                <HeaderLinksBlock/>
             </div>
         </>
     );
