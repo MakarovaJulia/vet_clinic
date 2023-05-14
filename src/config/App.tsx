@@ -9,19 +9,24 @@ import { ProfilePage } from "../pages/ProfilePage";
 import { DoctorPage } from "../pages/DoctorPage";
 import { ServicesPage } from "../pages/ServicesPage";
 import { ServicePage } from "../pages/ServicePage";
+import { useStores } from "../utils/use-stores-hook";
 
 const App: FC = () => {
+  const {
+    authStore: { isAuthorized },
+  } = useStores();
+
   return (
     <Routes>
       <Route path="/" element={<MainPage />} />
-      <Route element={<ProtectedRoute isAllowed={true} />}>
+      <Route element={<ProtectedRoute isAllowed={isAuthorized} />}>
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/doctor/:id" element={<DoctorPage />} />
+        <Route path="/department/:id" element={<ServicesPage />} />
+        <Route path="/service/:departmentId/:id" element={<ServicePage />} />
       </Route>
-      <Route path="/doctor/:id" element={<DoctorPage />} />
-      <Route path="/department/:id" element={<ServicesPage />} />
-      <Route path="/service/:departmentId/:id" element={<ServicePage />} />
-      <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
+      <Route path="/login" element={<LoginPage />} />
     </Routes>
   );
 };
