@@ -16,6 +16,7 @@ export const AppointmentPin = (props: any) => {
     }
   }, [doctorId]);
 
+  console.log(data);
   const {
     modalStore: { setCurrentModal, clearCurrentModal },
   } = useStores();

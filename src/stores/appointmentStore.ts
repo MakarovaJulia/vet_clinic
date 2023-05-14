@@ -54,7 +54,7 @@ export default class AppointmentStore {
       })
       .then((res) => {
         this.isLoading = false;
-        alert(res);
+        console.log(res.data);
       })
       .catch((err) => {
         this.isLoading = false;
