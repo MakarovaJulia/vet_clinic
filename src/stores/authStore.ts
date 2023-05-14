@@ -77,7 +77,6 @@ export default class AuthStore {
     axios
       .post(`${BASE_URL}/api/auth/sign-up`, accountData)
       .then((res) => {
-        alert(res.data);
         localStorage.setItem("user", JSON.stringify(res.data));
       })
       .catch((err) => {

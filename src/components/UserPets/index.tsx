@@ -5,8 +5,10 @@ import { UserPet } from "./UserPet";
 import { useStores } from "../../utils/use-stores-hook";
 import { PetsAddModal } from "../Modals/PetsAddModal";
 import { userByTokenGet, userPetsByIdGet } from "../../fetchData";
+import { useNavigate } from "react-router-dom";
 
 export const UserPets = ({ data }: any) => {
+  let navigate = useNavigate();
   const [userData, setUserData] = useState<any>(null);
   const [userPets, setUserPets] = useState<any>(null);
   const {
@@ -31,6 +33,13 @@ export const UserPets = ({ data }: any) => {
       userPetsByIdGet(userData?.id).then((data) => setUserPets(data));
     }
   }, [userData]);
+
+  useEffect(() => {
+    if (userPets) {
+      console.log(userPets);
+      navigate("/profile");
+    }
+  }, [userPets]);
 
   return (
     <div className={styles.pets_wrapper}>
