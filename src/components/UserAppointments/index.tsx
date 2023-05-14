@@ -30,12 +30,12 @@ export const UserAppointments = ({ data }: any) => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.appointment}>
-        {userAppointments?.data &&
-          userAppointments?.data.map((data: any) => (
+      {userAppointments?.data &&
+        userAppointments?.data.map((data: any) => (
+          <div className={styles.appointment}>
             <UserAppointment data={data} />
-          ))}
-      </div>
+          </div>
+        ))}
     </div>
   );
 };
