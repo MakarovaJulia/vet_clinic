@@ -56,7 +56,6 @@ export default class AuthStore {
       .post(`${BASE_URL}/api/auth/login`, accountData)
       .then((res) => {
         this.isLoading = false;
-        alert(res);
         localStorage.setItem("user", JSON.stringify(res.data));
       })
       .catch((err) => {
@@ -88,7 +87,6 @@ export default class AuthStore {
   };
 
   logout = () => {
-    console.log("logout");
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     this.isError = false;

@@ -15,8 +15,6 @@ export const AppointmentPin = (props: any) => {
       localStorage.setItem("doctorId", doctorId);
     }
   }, [doctorId]);
-
-  console.log(data);
   const {
     modalStore: { setCurrentModal, clearCurrentModal },
   } = useStores();

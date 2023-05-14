@@ -4,7 +4,6 @@ import { useState } from "react";
 const BASE_URL = "http://51.250.108.126:8080";
 export const departmentsGet = async () => {
   let departments = await axios.get(`${BASE_URL}/api/department`);
-  console.log(departments);
   return departments;
 };
 
@@ -18,7 +17,6 @@ export const departmentServicesGet = async (id: string) => {
   let departmentServices = await axios.get(
     `${BASE_URL}/api/department/${id}/service`
   );
-  console.log(departmentServices);
   return departmentServices;
 };
 
@@ -26,13 +24,11 @@ export const serviceDoctorsGet = async (id: string) => {
   let serviceDoctors = await axios.get(
     `${BASE_URL}/api/department/${id}/doctor`
   );
-  console.log(serviceDoctors);
   return serviceDoctors;
 };
 
 export const doctorByIdGet = async (id: string | undefined) => {
   let doctor = await axios.get(`${BASE_URL}/api/doctor/${id}`);
-  console.log(doctor);
   return doctor;
 };
 

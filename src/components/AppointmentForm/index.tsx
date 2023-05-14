@@ -82,7 +82,7 @@ export const AppointmentForm = () => {
         timeSlotId: useTimeId,
       });
       if (!isError) {
-        console.log("add pet");
+        console.log("add appointment");
       }
     },
   });

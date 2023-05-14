@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { observer } from "mobx-react";
 import styles from "./index.module.sass";
 import login_image from "../../asserts/login_image.svg";
 import { NavLink } from "react-router-dom";
 import { SignUpForm } from "../../components/SignUpForm";
+import { useNavigate } from "react-router";
 
 export const SignUpPage = observer(() => {
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("token") || localStorage.getItem("user")) {
+      navigate("/profile");
+    }
+  }, [localStorage.getItem("token"), localStorage.getItem("user")]);
+
   return (
     <>
       <div className={styles.content_wrapper}>

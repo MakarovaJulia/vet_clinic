@@ -45,6 +45,12 @@ export const ProfilePage = observer(() => {
     }
   }, [user]);
 
+  useEffect(() => {
+    if (userData) {
+      console.log(userData);
+    }
+  }, [userData]);
+
   return (
     <>
       <Header />
