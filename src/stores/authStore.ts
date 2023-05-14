@@ -4,15 +4,13 @@ import axios from "axios";
 
 interface userProps{
     id?: string,
-    photo_url?: string,
-    firstname?: string,
-    lastname?: string,
-    username: string,
+    firstName?: string,
+    lastName?: string,
     email: string,
-    phone_number?: string,
-    balance? : number
-    role?: object,
+    phone?: string,
 }
+
+export const BASE_URL = 'http://51.250.108.126:8080'
 
 export default class AuthStore {
     user: userProps;
@@ -22,10 +20,8 @@ export default class AuthStore {
 
     constructor(public mainStore: MainStore) {
         this.user = {
-            username: '',
-            phone_number: '',
+            phone: '',
             email: '',
-            balance: 0
         }
         makeObservable(this,{
             isLoading: observable,
@@ -45,56 +41,46 @@ export default class AuthStore {
         this.isError = false;
         this.phone = '';
     }
-    //
-    //
-    // get isAuthorized() {
-    //     return localStorage.getItem("token")!== null && localStorage.getItem("token")!==''
-    // }
-    //
-    // login = (accountData: {login: string, password: string}) => {
-    //     this.isLoading = true;
-    //     this.isError = false;
-    //     axios.post("login", accountData)
-    //         .then((res) => {
-    //             this.isLoading = false;
-    //             localStorage.setItem("token", res.data.token);
-    //             localStorage.setItem("user", JSON.stringify(res.data))
-    //         })
-    //         .catch((err) => {
-    //             this.isLoading = false;
-    //             this.isError = true;
-    //             console.log(err);
-    //         })
-    // }
-    //
-    // signup = (accountData: {phone_number: string, password: string}) => {
-    //     this.isError = false;
-    //     axios.post("account", accountData)
-    //         .then((res) => {
-    //             localStorage.setItem("user", JSON.stringify(res.data))
-    //         })
-    //         .catch((err) => {
-    //             this.isError = true;
-    //             console.log(err);
-    //         })
-    // }
-    //
-    // logout = () => {
-    //     console.log('logout');
-    //     localStorage.removeItem("token")
-    //     localStorage.removeItem("user")
-    //     this.isError = false;
-    // };
-    //
-    // setPhone = (newPhone: string) => {
-    //     this.phone = newPhone;
-    // }
-    //
-    // clearPhone = () => {
-    //     this.phone = '';
-    // }
-    //
-    // getUserInfo = () => {
-    //     return this.user;
-    // }
+
+
+    get isAuthorized() {
+        return localStorage.getItem("token")!== null && localStorage.getItem("token")!==''
+    }
+
+    login = (accountData: {email: string, password: string}) => {
+        this.isLoading = true;
+        this.isError = false;
+        axios.post(`${BASE_URL}/api/auth/login`, accountData)
+            .then((res) => {
+                this.isLoading = false;
+                alert(res)
+                localStorage.setItem("user", JSON.stringify(res.data))
+            })
+            .catch((err) => {
+                this.isLoading = false;
+                this.isError = true;
+                console.log(err);
+            })
+    }
+
+    signup = (accountData: {firstName: string, lastName: string, phone: string,
+        repeatedPassword:string,  email:string, password: string}) => {
+        this.isError = false;
+        axios.post(`${BASE_URL}/api/auth/sign-up`, accountData)
+            .then((res) => {
+                alert(res.data)
+                localStorage.setItem("user", JSON.stringify(res.data))
+            })
+            .catch((err) => {
+                this.isError = true;
+                console.log(err);
+            })
+    }
+
+    logout = () => {
+        console.log('logout');
+        localStorage.removeItem("token")
+        localStorage.removeItem("user")
+        this.isError = false;
+    };
 }

@@ -1,45 +1,91 @@
-import {useStores} from "../../utils/use-stores-hook";
-import {Button} from "../../components/ui/Button";
-import {useFormik} from "formik";
-import {authValidationSchema, regValidationSchema} from "../../utils/validationSchemas";
 import styles from "./index.module.sass";
 import classNames from "classnames/bind";
-import {useNavigate} from "react-router";
-import round_image from "../../asserts/icons/round_icon.svg";
 import React, {useState} from "react";
-import {usePasswordToggle} from "../../utils/usePasswordToggle";
+import {regValidationSchema} from "../../utils/validationSchemas";
+import {useFormik} from "formik";
+import {useStores} from "../../utils/use-stores-hook";
 import {Input} from "../ui/Input";
+import round_image from "../../asserts/icons/round_icon.svg"
+import {Button} from "../ui/Button";
+import {useNavigate} from "react-router";
+import {usePasswordToggle} from "../../utils/usePasswordToggle";
+
+
 
 const cx = classNames.bind(styles);
 
 export const SignUpForm = () => {
 
+    const {authStore: {signup, isError,}} = useStores();
+    const [agree, setAgree] = useState(true)
     let navigate = useNavigate()
     const [passwordInputType, toggleIcon] = usePasswordToggle()
-    const [agree, setAgree] = useState(false)
-    // const  {authStore: {login, isError}, modalStore: {clearCurrentModal}} = useStores();
-
 
     const formik = useFormik({
         initialValues: {
+            firstName:'',
+            lastName:'',
+            phone:'',
             email: '',
-            password: ''
+            password: '',
+            repeatedPassword:'',
         },
         validationSchema: regValidationSchema,
         onSubmit: values => {
-            // login({
-            //     login: values.phone,
-            //     password: values.password
-            // })
-            // if (!isError) {
-            //     clearCurrentModal()
-            //     navigate('/profile')
-            // }
+            signup({
+                firstName:values.firstName,
+                lastName:values.lastName,
+                repeatedPassword:values.repeatedPassword,
+                phone:values.phone,
+                email:values.email,
+                password:values.password,
+            })
+          if (!isError) {
+            console.log('user')
+            navigate('/login')
+          }
         },
     })
 
+
     return (
         <form onSubmit={formik.handleSubmit} className={styles.form}>
+            <div>
+                <p>Имя</p>
+                <input
+                    className={cx({
+                        input: true,
+                        inputError: formik.touched.firstName && formik.errors.firstName
+                    })}
+                    id='firstName'
+                    type='firstName'
+                    {...formik.getFieldProps('firstName')}
+                />
+            </div>
+            <div>
+                <p>Фамилия</p>
+                <input
+                    className={cx({
+                        input: true,
+                        inputError: formik.touched.lastName && formik.errors.lastName
+                    })}
+                    id='lastName'
+                    type='lastName'
+                    {...formik.getFieldProps('lastName')}
+                />
+            </div>
+            <div>
+                <p>Телефон</p>
+                <input
+                    className={cx({
+                        input: true,
+                        inputError: formik.touched.phone && formik.errors.phone
+                    })}
+                    id='phone'
+                    type='phone'
+                    {...formik.getFieldProps('phone')}
+                />
+            </div>
             <div>
                 <p>Email</p>
                 <input
@@ -57,7 +103,7 @@ export const SignUpForm = () => {
             ) : null}
             <div>
                 <div className={styles.password_wrapper}>
-                    <p>Password</p>
+                    <p>Пароль</p>
                     <span className={styles.password_toggle_icon}>{toggleIcon}</span>
                 </div>
                 <Input
@@ -72,6 +118,19 @@ export const SignUpForm = () => {
                 {formik.touched.password && formik.errors.password ? (
                     <div className={styles.errorMessage}>{formik.errors.password}</div>
                 ) : null}
+                <div className={styles.password_wrapper}>
+                    <p>Повторите пароль</p>
+                    <span className={styles.password_toggle_icon}>{toggleIcon}</span>
+                </div>
+                <Input
+                    className={cx({
+                        input: true,
+                        inputError: formik.touched.repeatedPassword && formik.errors.repeatedPassword
+                    })}
+                    id='repeatedPassword'
+                    type={passwordInputType}
+                    {...formik.getFieldProps('repeatedPassword')}
+                />
                 <div className={styles.validation_wrapper}>
                     <div className={styles.validation_item}>
                         <img src={round_image}/>
@@ -104,7 +163,6 @@ export const SignUpForm = () => {
                 title='Зарегистрироваться'
                 type='submit'
                 disabled={!agree || !formik.isValid}
-                onClick={()=>{}}
             >Зарегистрироваться</Button>
         </form>
     )

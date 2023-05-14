@@ -1,40 +1,49 @@
 interface IDepartmentItem {
     id: number,
     name: string;
+    count: number
 }
 
 export const departmentItemsMock: IDepartmentItem[] = [
     {
         id: 0,
         name: 'Травматология',
+        count: 1
     },
     {
         id: 1,
         name: 'Стоматология',
+        count: 4
     },
     {
         id: 2,
         name: 'Хирургия',
+        count: 4
     },
     {
         id: 3,
         name: 'Кардиология',
+        count: 1
     },
     {
         id: 4,
         name: 'Травматология',
+        count: 5
     },
     {
         id: 5,
         name: 'Стоматология',
+        count: 2
     },
     {
         id: 6,
         name: 'Хирургия',
+        count: 3
     },
     {
         id: 7,
         name: 'Кардиология',
+        count: 1
     },
 ]
 

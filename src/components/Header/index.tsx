@@ -6,6 +6,7 @@ import {NavLink, useNavigate} from 'react-router-dom';
 import { RoutesList } from '../../config/RoutesList';
 import {Button} from "../ui/Button";
 import {HeaderLinksBlock} from "../HeaderLinksBlock";
+import {useStores} from "../../utils/use-stores-hook";
 
 export const Header = () => {
 
@@ -15,6 +16,10 @@ export const Header = () => {
     const goTo = (link:string): void => {
         navigate(link)
     }
+
+  const {
+    authStore: {user, isAuthorized}
+  } = useStores()
 
     return (
         <>
@@ -32,7 +37,7 @@ export const Header = () => {
                 <p>Мы работаем круглосуточно<br/> без ночного тарифа</p>
                 <p>Кремлевская ул. 35 Казань</p>
                 <p>+79061171472</p>
-                { isAuth ?
+                { isAuthorized ?
                     <NavLink
                         to='/profile'
                         className={navData =>
@@ -46,7 +51,6 @@ export const Header = () => {
                     <Button disabled={false} onClick={()=>{goTo('/signup')}}>Зарегистрироваться</Button>
                 }
             </div>
-                <HeaderLinksBlock/>
             </div>
         </>
     );

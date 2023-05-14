@@ -1,4 +1,3 @@
-import {Button} from "../../components/ui/Button";
 import {useFormik} from "formik";
 import {authValidationSchema} from "../../utils/validationSchemas";
 import styles from "./index.module.sass";
@@ -7,6 +6,8 @@ import {useNavigate} from "react-router";
 import React from "react";
 import {usePasswordToggle} from "../../utils/usePasswordToggle";
 import {Input} from "../ui/Input";
+import {useStores} from "../../utils/use-stores-hook";
+import {Button} from "../ui/Button";
 
 const cx = classNames.bind(styles);
 
@@ -14,7 +15,7 @@ export const AuthForm = () => {
 
     let navigate = useNavigate()
     const [passwordInputType, toggleIcon] = usePasswordToggle()
-    // const  {authStore: {login, isError}, modalStore: {clearCurrentModal}} = useStores();
+    const {authStore: {login, isError,}} = useStores();
 
 
     const formik = useFormik({
@@ -24,14 +25,14 @@ export const AuthForm = () => {
         },
         validationSchema: authValidationSchema,
         onSubmit: values => {
-            // login({
-            //     login: values.phone,
-            //     password: values.password
-            // })
-            // if (!isError) {
-            //     clearCurrentModal()
-            //     navigate('/profile')
-            // }
+            login({
+                email: values.email,
+                password: values.password
+            })
+            if (!isError) {
+              console.log('user')
+              navigate('/profile')
+            }
         },
     })
 

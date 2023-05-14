@@ -4,15 +4,21 @@ import './index.css';
 import App from './config/App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
+import {Provider} from "mobx-react";
+import mainStore from "./stores/mainStore";
+import {ModalConstructor} from "./components/Modals/ModalConstuctor";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
+      <Provider {...mainStore}>
       <BrowserRouter>
           <App />
+          <ModalConstructor/>
       </BrowserRouter>
+      </Provider>
   </React.StrictMode>
 );
 
