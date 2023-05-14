@@ -23,6 +23,7 @@ export const DoctorPage = observer(() => {
             doctorTimeGet(id).then((data)=>{setTime(data.data)})
         }
     }, [id])
+
     return (
         <BaseLayout>
             <div className={styles.content_wrapper}>

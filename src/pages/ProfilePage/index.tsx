@@ -6,52 +6,63 @@ import {Header} from "../../components/Header";
 import {useStores} from "../../utils/use-stores-hook";
 import {Button} from "../../components/ui/Button";
 import {useNavigate} from "react-router-dom";
-
-interface IAccountData {
-    first_name: string,
-    last_name: string,
-    email: string,
-    phone: string,
-    password: string
-}
+import {useEffect, useState} from "react";
+import {userByTokenGet, userPetsByIdGet} from "../../fetchData";
 
 export const ProfilePage = observer(() => {
 
     let navigate = useNavigate()
+    let userToken = localStorage.getItem("user")
+    const [user, setUser] = useState<any>(null)
+    const [userData, setUserData] = useState<any>(null)
+
+    const {
+        authStore: {logout}
+    } = useStores()
 
     const goTo = (path: string): void => {
         navigate(path)
     }
 
-    const {
-        authStore: {user, logout}
-    } = useStores()
+    useEffect(()=>{
+        if (userToken?.valueOf()){
+            setUser(JSON.parse(userToken))
+            console.log(user)
+        }
+    }, [userToken])
+
 
     const userLogout = (): void => {
         logout()
         navigate('/')
     }
 
-    const showData = () =>{
-        alert(localStorage.getItem("user"))
-    }
+    useEffect(()=>{
+        if(user){
+            let token = user['accessToken']
+            localStorage.setItem("token", token);
+            userByTokenGet(token).then((data)=>{setUserData(data)})
 
-    console.log(localStorage.getItem("user"))
+        }
+    }, [user])
 
     return(
         <>
             <Header/>
-            <div className={styles.user_info}>
-                <div className={styles.name}>
-                    ФИО пользователя
-                </div>
-                <div className={styles.contacts}>
-                    Email
-                    Телефон
-                </div>
-                <Button disabled={false} onClick={()=>logout()}>Выйти</Button>
-            </div>
+            {userData?
+              <div className={styles.user_info}>
+                  <div className={styles.name}>
+                      {userData.data.firstName} {userData.data.lastName}
+                  </div>
+                  <div className={styles.contacts}>
+                      {userData.data.email}
+                  </div>
+              </div>
+              :
+              <></>
+            }
             <div className={styles.user_info_wrapper}>
+                <Button disabled={false} onClick={()=>userLogout()}>Выйти</Button>
                 <UserPets/>
                 <UserAppointments/>
             </div>

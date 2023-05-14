@@ -31,7 +31,7 @@ export const AuthForm = () => {
             })
             if (!isError) {
               console.log('user')
-                // navigate('/profile')
+              navigate('/profile')
             }
         },
     })

@@ -39,7 +39,11 @@ export const SignUpForm = () => {
                 phone:values.phone,
                 email:values.email,
                 password:values.password,
-            });
+            })
+          if (!isError) {
+            console.log('user')
+            navigate('/login')
+          }
         },
     })
 

@@ -19,3 +19,10 @@ export const regValidationSchema = Yup.object({
         .max(20, 'Длина пароля не может превышать 20 символов')
         .required('Введите пароль')
 });
+
+export const petValidationSchema = Yup.object({
+    name: Yup.string()
+      .min(1, 'Длина имени не может быть меньше 1 символа')
+      .max(30, 'Длина пароля не может превышать 30 символов')
+      .required('Введите имя')
+});
